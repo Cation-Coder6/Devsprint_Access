@@ -16,6 +16,7 @@ export default function (app: Application): Model<any> {
       price: { type: Number, required: true },
       quantity: { type: Number, required: true },
       seller_id: { type: String, required: true },
+      hostel: { type: String, required: true },
     },
     {
       timestamps: true,
