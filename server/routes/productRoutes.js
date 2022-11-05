@@ -12,6 +12,7 @@ const {
     updateProduct,
     deleteProduct,
     uploadImage,
+    getAllProductsByCategory
 } = require('../controllers/productController')
 
 const { getSingleProductReviews } = require('../controllers/reviewController')
@@ -24,6 +25,8 @@ router
 router
     .route('/uploadImage')
     .post([authenticateUser], uploadImage)
+
+router.route("/category").post(authenticateUser, getAllProductsByCategory)
 
 router
     .route('/:id')
