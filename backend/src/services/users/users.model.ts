@@ -1,8 +1,4 @@
-// users-model.ts - A mongoose model
-//
-// See http://mongoosejs.com/docs/models.html
-// for more of what you can do here.
-import { Application } from "../declarations";
+import { Application } from "../../declarations";
 import { Model, Mongoose } from "mongoose";
 
 export default function (app: Application): Model<any> {
@@ -12,18 +8,16 @@ export default function (app: Application): Model<any> {
     {
       email: { type: String, unique: true, lowercase: true },
       password: { type: String },
-      roll_number: { type: String, unique: true },
-      profile_picture: { type: String },
+      rollNumber: { type: String, unique: true },
+      profilePicture: { type: String },
       hostel: { type: String },
-      room_number: { type: String },
+      roomNumber: { type: String },
     },
     {
       timestamps: true,
     }
   );
 
-  // This is necessary to avoid model compilation errors in watch mode
-  // see https://mongoosejs.com/docs/api/connection.html#connection_Connection-deleteModel
   if (mongooseClient.modelNames().includes(modelName)) {
     (mongooseClient as any).deleteModel(modelName);
   }
