@@ -4,25 +4,25 @@ const CustomError = require('../errors')
 const path = require('path')
 const User = require("../models/User")
 
-const createProduct = async(req, res) => {
+const createProduct = async (req, res) => {
     req.body.user = req.user.userId
     const product = await Product.create(req.body)
     res.status(StatusCodes.CREATED).json({ product })
 }
-const getAllProducts = async(req, res) => {
-    const user = await User.findOne({ _id: req.user.userId })
-    console.log(user)
-    const products = await Product.find({ hostel: user.hostel })
+const getAllProducts = async (req, res) => {
+    const { category } = req.query
 
-    res.status(StatusCodes.OK).json({ products, count: products.length })
-}
-const getAllProductsByCategory = async(req, res) => {
-    const { category } = req.body
     const user = await User.findOne({ _id: req.user.userId })
-    const products = await Product.find({ category, hostel: user.hostel })
-    res.status(StatusCodes.OK).json({ products, count: products.length })
+
+    if (category) {
+        const products = await Product.find({ category: category, hostel: user.hostel })
+        res.status(StatusCodes.OK).json({ products, count: products.length })
+    } else {
+        const products = await Product.find({ hostel: user.hostel })
+        res.status(StatusCodes.OK).json({ products, count: products.length })
+    }
 }
-const getSingleProduct = async(req, res) => {
+const getSingleProduct = async (req, res) => {
     const { id: productId } = req.params
 
     const product = await Product.findOne({ _id: productId }).populate('reviews')
@@ -33,7 +33,7 @@ const getSingleProduct = async(req, res) => {
 
     res.status(StatusCodes.OK).json({ product })
 }
-const updateProduct = async(req, res) => {
+const updateProduct = async (req, res) => {
     const { id: productId } = req.params
 
     const product = await Product.findOneAndUpdate({ _id: productId }, req.body, {
@@ -47,7 +47,7 @@ const updateProduct = async(req, res) => {
 
     res.status(StatusCodes.OK).json({ product })
 }
-const deleteProduct = async(req, res) => {
+const deleteProduct = async (req, res) => {
     const { id: productId } = req.params
 
     const product = await Product.findOne({ _id: productId })
@@ -59,7 +59,7 @@ const deleteProduct = async(req, res) => {
     await product.remove()
     res.status(StatusCodes.OK).json({ msg: 'Success! Product removed.' })
 }
-const uploadImage = async(req, res) => {
+const uploadImage = async (req, res) => {
     if (!req.files) {
         throw new CustomError.BadRequestError('No File Uploaded')
     }
@@ -92,5 +92,4 @@ module.exports = {
     updateProduct,
     deleteProduct,
     uploadImage,
-    getAllProductsByCategory
 }

@@ -1,39 +1,38 @@
 const express = require('express')
 const router = express.Router()
 const {
-    authenticateUser,
-    authorizePermissions,
+  authenticateUser,
+  authorizePermissions,
 } = require('../middleware/authentication')
 
 const {
-    createProduct,
-    getAllProducts,
-    getSingleProduct,
-    updateProduct,
-    deleteProduct,
-    uploadImage,
-    getAllProductsByCategory
+  createProduct,
+  getAllProducts,
+  getSingleProduct,
+  updateProduct,
+  deleteProduct,
+  uploadImage
 } = require('../controllers/productController')
 
 const { getSingleProductReviews } = require('../controllers/reviewController')
 
 router
-    .route('/')
-    .post([authenticateUser], createProduct)
-    .get([authenticateUser], getAllProducts)
+  .route('/')
+  .post([authenticateUser], createProduct)
+  .get([authenticateUser], getAllProducts)
 
 router
-    .route('/uploadImage')
-    .post([authenticateUser], uploadImage)
+  .route('/uploadImage')
+  .post([authenticateUser], uploadImage)
 
-router.route("/category").post(authenticateUser, getAllProductsByCategory)
 
 router
-    .route('/:id')
-    .get(getSingleProduct)
-    .patch([authenticateUser], updateProduct)
-    .delete([authenticateUser], deleteProduct)
+  .route('/:id')
+  .get(getSingleProduct)
+  .patch([authenticateUser], updateProduct)
+  .delete([authenticateUser], deleteProduct)
 
-router.route('/:id/reviews').get(getSingleProductReviews)
+router
+  .route('/:id/reviews').get(getSingleProductReviews)
 
 module.exports = router
