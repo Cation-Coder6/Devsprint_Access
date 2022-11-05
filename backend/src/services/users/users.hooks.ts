@@ -1,5 +1,10 @@
 import * as feathersAuthentication from '@feathersjs/authentication';
 import * as local from '@feathersjs/authentication-local';
+import FRequired from "../../hooks/FRequired";
+import Permit from "../../hooks/Permit";
+import SetCreatedByQuery from "../../hooks/SetCreatedByQuery";
+import SetDefaultItem from "../../hooks/SetDefaultItem";
+import hasAccessToken from "../../utils/hasAccessToken";
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = feathersAuthentication.hooks;

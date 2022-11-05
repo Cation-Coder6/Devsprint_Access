@@ -2,7 +2,7 @@
 //
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
-import { Application } from '../declarations';
+import { Application } from '../../declarations';
 import { Model, Mongoose } from 'mongoose';
 
 export default function (app: Application): Model<any> {

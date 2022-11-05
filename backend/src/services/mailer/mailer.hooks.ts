@@ -1,6 +1,9 @@
 import { HooksObject } from '@feathersjs/feathers';
 import * as authentication from '@feathersjs/authentication';
+import { disallow, iff, isNot, isProvider } from "feathers-hooks-common";
+
 // Don't remove this comment. It's needed to format import lines nicely.
+
 
 const { authenticate } = authentication.hooks;
 

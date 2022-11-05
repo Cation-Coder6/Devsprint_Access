@@ -11,7 +11,7 @@ const CheckIfEmailExists = () => async (context: HookContext) => {
     const { email } = data;
 
     const userData = await app
-        .service('v1/user')
+        .service('user')
         ._find({
             query: {
                 email,
