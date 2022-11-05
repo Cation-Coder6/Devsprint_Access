@@ -1,28 +1,14 @@
-// Initializes the `mailer` service on path `/mailer`
-import { ServiceAddons } from '@feathersjs/feathers';
-import { Application } from '../../declarations';
-import { Mailer } from './mailer.class';
-import createModel from './mailer.model';
-import hooks from './mailer.hooks';
-
-// Add this service to the service type index
-declare module '../../declarations' {
-  interface ServiceTypes {
-    'mailer': Mailer & ServiceAddons<any>;
-  }
-}
+// Initializes the `v1/mailer` service on path `/v1/mailer`
+import { Service, ServiceAddons } from "@feathersjs/feathers";
+import { Application } from "../../declarations";
+import { Mailer } from "./mailer.class";
+import hooks from "./mailer.hooks";
+import { SendMailOptions } from "nodemailer";
 
 export default function (app: Application): void {
-  const options = {
-    Model: createModel(app),
-    paginate: app.get('paginate')
-  };
+  app.use("mailer", new Mailer(app));
 
-  // Initialize our service with any options it requires
-  app.use('/mailer', new Mailer(options, app));
-
-  // Get our initialized service so that we can register hooks
-  const service = app.service('mailer');
+  const service: Service<SendMailOptions> = app.service("mailer");
 
   service.hooks(hooks);
 }
