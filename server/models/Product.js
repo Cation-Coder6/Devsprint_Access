@@ -32,8 +32,7 @@ const ProductSchema = new mongoose.Schema(
     },
 
     hostel: {
-      type: String,
-      default: '',
+      type: String
     },
 
     seller_id: {
