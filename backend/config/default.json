@@ -1,30 +1,11 @@
 {
-  "host": "localhost",
-  "port": 3030,
-  "public": "../public/",
-  "paginate": {
-    "default": 10,
-    "max": 50
-  },
-  "authentication": {
-    "entity": "user",
-    "service": "users",
-    "secret": "l3uClNFRUzk/QgqwO10WPCNBQpE=",
-    "authStrategies": ["jwt", "local"],
-    "jwtOptions": {
-      "header": {
-        "typ": "access"
-      },
-      "audience": "https://yourdomain.com",
-      "issuer": "feathers",
-      "algorithm": "HS256",
-      "expiresIn": "1d"
+    "host": "localhost",
+    "port": 3030,
+    "public": "../public/",
+    "paginate": {
+        "default": 10,
+        "max": 50
     },
-<<<<<<< HEAD
-    "local": {
-      "usernameField": "email",
-      "passwordField": "password"
-=======
     "authentication": {
         "entity": "user",
         "service": "users",
@@ -51,15 +32,5 @@
             "user": "evilmeowsupremacy@gmail.com",
             "pass": "slcaprwxwrjsjmqj"
         }
->>>>>>> f746c6216b8b5967915c61e6c1a244c6c0ac53ab
     }
-  },
-  "mongodb": "mongodb+srv://access:access2022@cluster0.rphmddt.mongodb.net/hostel-bazaar",
-  "mailer": {
-    "service": "gmail",
-    "auth": {
-      "user": "evilmeowsupremacy@gmail.com",
-      "pass": "slcaprwxwrjsjmqj"
-    }
-  }
 }
