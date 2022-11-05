@@ -1,9 +1,21 @@
-import { Service, MongooseServiceOptions } from 'feathers-mongoose';
-import { Application } from '../../declarations';
+import {
+  Id,
+  NullableId,
+  Paginated,
+  Params,
+  ServiceMethods,
+} from "@feathersjs/feathers";
+import { Application } from "../../declarations";
+import { createTransport, Transporter, SendMailOptions } from "nodemailer";
 
-export class Mailer extends Service {
-  //eslint-disable-next-line @typescript-eslint/no-unused-vars
-  constructor(options: Partial<MongooseServiceOptions>, app: Application) {
-    super(options);
+export class Mailer implements Partial<ServiceMethods<SendMailOptions>> {
+  private transporter: Transporter;
+
+  constructor(app: Application) {
+    this.transporter = createTransport(app.get("mailer"));
+  }
+
+  async create(data: Partial<SendMailOptions>): Promise<any> {
+    return await this.transporter.sendMail(data);
   }
 }
