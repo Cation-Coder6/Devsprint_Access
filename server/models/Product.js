@@ -28,8 +28,12 @@ const ProductSchema = new mongoose.Schema(
 
     category: {
       type: String,
-      required: [true, 'Please provide product category'],
-      enum: ['office', 'kitchen', 'bedroom'],
+      required: [true, 'Please provide product category']
+    },
+
+    hostel: {
+      type: String,
+      default: '',
     },
 
     seller_id: {
