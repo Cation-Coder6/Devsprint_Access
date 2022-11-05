@@ -1,0 +1,46 @@
+//300-400/
+
+export const IT = 300;
+export const SALES = 301;
+
+export const SOFTWARE_DEVELOPMENT = 302;
+export const PRODUCT_DESIGN = 303;
+export const PRODUCT_MANAGEMENT = 304;
+export const CATEGORIES = [SOFTWARE_DEVELOPMENT, PRODUCT_DESIGN, PRODUCT_MANAGEMENT];
+
+export const FRONTEND = 305;
+export const BACKEND = 306;
+export const FULLSTACK = 307;
+export const QA_ENGINEER = 308;
+export const SYSTEM_ENGINEER = 309;
+export const ANDROID_ENGINEER = 310;
+export const DATA_ENGINEER = 311;
+export const DEVOPS = 312;
+export const CLOUD_ARCHITECT = 313;
+export const SOFTWARE_DEVELOPMENT_EXPERTISE = [
+    FRONTEND,
+    BACKEND,
+    FULLSTACK,
+    QA_ENGINEER,
+    SYSTEM_ENGINEER,
+    ANDROID_ENGINEER,
+    DATA_ENGINEER,
+    DEVOPS,
+    CLOUD_ARCHITECT,
+];
+
+export const SIX_MONTH_EXP = 314;
+export const TWELVE_MONTH_EXP = 315;
+export const TWENTYFOUR_MONTH_EXP = 316;
+export const WORK_EXPERTIES = [SIX_MONTH_EXP, TWELVE_MONTH_EXP, TWENTYFOUR_MONTH_EXP];
+
+export const UNDER_1_MONTH = 317;
+export const MORE_THAN_1_MONTH = 318;
+export const LESS_THAN_6_MONTH = 319;
+export const TIME_TO_SWITCH = [UNDER_1_MONTH, MORE_THAN_1_MONTH, LESS_THAN_6_MONTH];
+
+export const LESS_SALARY = 320;
+export const COMMUTE_ISSUES = 321;
+export const UNHEALTHY_ORGANIZATION = 322;
+export const IRRELEVENT_ROLE = 323;
+export const REASON = [LESS_SALARY, COMMUTE_ISSUES, UNHEALTHY_ORGANIZATION, IRRELEVENT_ROLE];
